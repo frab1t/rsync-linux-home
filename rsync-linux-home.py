@@ -2,16 +2,19 @@
 ##################################################
 # rsync-linux-home.py                            #
 # @frab1t                                        #
-# https://github.com/frab1t/rsync-linux-home.py  #
+# https://github.com/frab1t/rsync-linux-home     #
 ##################################################
 import subprocess
 import getpass
+import os
 
 DRIVE_UUID="df577c96-3d53-473b-b216-07ced6685eaa" # set your drive UUID
 
 USER=getpass.getuser()
+MNT_DIR="/run/media/{user}".format(user=USER)
+
 SRC_DIR="/home/{}/".format(USER)
-DEST_DIR="/run/media/{user}/{drive_uuid}/rsync-linux-home/".format(user=USER,drive_uuid=DRIVE_UUID)
+DEST_DIR="{mnt_dir}/{drive_uuid}/rsync-linux-home/".format(mnt_dir=MNT_DIR,drive_uuid=DRIVE_UUID)
 LOG_FILENAME = 'rsync.log'
 
 # rsync options
@@ -36,6 +39,10 @@ INCLUDES = [
 EXCLUDES = [
     "*"
 ]
+
+
+def is_device_connected():
+    return os.path.isdir("{MNT_DIR}/{UUID}/".format(MNT_DIR=MNT_DIR, UUID=DRIVE_UUID))
 
 
 def generate_includes(inc):
@@ -105,5 +112,9 @@ log file: {log_file}
 rsync options: {opt}""".format(source=SRC_DIR, destination=DEST_DIR, opt=OPTIONS, log_file=LOG_FILENAME))
 
 
-cmd = generate_statement(OPTIONS, INCLUDES, EXCLUDES, SRC_DIR, DEST_DIR)
-execute_backup(cmd)
+if is_device_connected():
+    cmd = generate_statement(OPTIONS, INCLUDES, EXCLUDES, SRC_DIR, DEST_DIR)
+    execute_backup(cmd)
+else:
+    print("""error: device with UUID={UUID} 
+is not mountend into {MNT_DIR}""".format(UUID=DRIVE_UUID,MNT_DIR=MNT_DIR))
