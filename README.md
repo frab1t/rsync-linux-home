@@ -23,3 +23,6 @@ A simple script to make backups of your linux home.
     ```
     ./rsync-linux-home.py
     ```
+
+## License
+GPLv3
