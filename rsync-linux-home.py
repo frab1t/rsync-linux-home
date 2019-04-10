@@ -8,7 +8,7 @@ import subprocess
 import getpass
 import os
 
-DRIVE_UUID="df577c96-3d53-473b-b216-07ced6685eaa" # set your drive UUID
+DRIVE_UUID="df577c96-3d53-473b-b216-07ced6685eaa" # set here your UUID of destination partition
 
 USER=getpass.getuser()
 MNT_DIR="/run/media/{user}".format(user=USER)
