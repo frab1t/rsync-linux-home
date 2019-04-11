@@ -11,7 +11,7 @@ A simple script to make backups of your linux home.
 2. Configure which folders to include and which to exclude, changing arrays `INCLUDES`/`EXCLUDES` into `rsync-linux-home.py`:
     ```
     INCLUDES = [...]
-    EXCLOUDES = [...]
+    EXCLUDES = [...]
     ```
 
 3. Make the script executable
