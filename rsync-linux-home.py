@@ -95,10 +95,12 @@ def execute_backup(cmd):
         print("> Backup Aborted")
         print('Error rsync')
         print("Exit code: {}".format(sperror.args[0]))
+        exit(sperror.args[0])
     except Exception as exception:
         print("> Backup Aborted")
         print('Error')
         print(exception)
+        exit(1)
 
 
 
