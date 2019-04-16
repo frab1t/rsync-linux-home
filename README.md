@@ -1,11 +1,11 @@
 # rsync-linux-home
 
-A simple script to make backups of your linux home.
+A simple script to make backups of your linux home with rsync.
 
 ## Usage
-1. Configure UUID of destination partition into `rsync-linux-home.py`:
+1. Enter the UUID of the destination partition into `rsync-linux-home.py`:
     ```
-    DRIVE_UUID="<set here your UUID Partition>"
+    DRIVE_UUID="<set here Partition UUID>"
     ```
 
 2. Configure which folders to include and which to exclude, changing arrays `INCLUDES`/`EXCLUDES` into `rsync-linux-home.py`:
