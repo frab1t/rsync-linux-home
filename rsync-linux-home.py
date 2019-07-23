@@ -1,8 +1,8 @@
 #!/bin/python3
 ##################################################
 # rsync-linux-home.py                            #
-# @frab1t                                        #
-# https://github.com/frab1t/rsync-linux-home     #
+# @frsposito                                     #
+# https://github.com/frsposito/rsync-linux-home  #
 ##################################################
 import subprocess
 import getpass
